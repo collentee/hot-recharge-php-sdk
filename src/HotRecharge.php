@@ -7,6 +7,7 @@ require_once 'HRAuthConfig.php';
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+
 class HotRecharge
 {
     protected $client;
@@ -54,7 +55,7 @@ class HotRecharge
     {
         try {
             $body     = json_encode(['amount' => $amount, 'targetmobile' => $mobileNumber]);
-            $response = $this->client->request('POST', Constants::BASE_URL .Constants:: RECHARGE_PINLESS, [
+            $response = $this->client->request('POST', Constants::BASE_URL . Constants:: RECHARGE_PINLESS, [
                 'headers' => $this->headers,
                 'body'    => $body
             ]);
