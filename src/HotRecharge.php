@@ -194,9 +194,9 @@ class HotRecharge
                 'body'    => $body
             ]);
 
-            return $response->getBody();
+            return $response->getBody()->getContents();
         } catch (RequestException $e) {
-            return Constants::ERROR . $e->getMessage()->getMessage();
+            return Constants::ERROR . $e->getMessage();
         }
     }
 
