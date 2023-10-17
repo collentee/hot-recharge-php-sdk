@@ -89,7 +89,7 @@ class HotRecharge
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
-            return Constants::ERROR . $e->getMessage();
+            return $this->hrExceptions($e);
         }
     }
 
@@ -102,7 +102,7 @@ class HotRecharge
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
-            return Constants::ERROR . $e->getMessage();
+            return $this->hrExceptions($e);
         }
     }
 
@@ -115,7 +115,7 @@ class HotRecharge
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
-            return Constants::ERROR . $e->getMessage();
+            return $this->hrExceptions($e);
         }
     }
 
@@ -130,7 +130,7 @@ class HotRecharge
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
-            return Constants::ERROR . $e->getMessage();
+            return $this->hrExceptions($e);
         }
     }
 
@@ -152,7 +152,7 @@ class HotRecharge
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
-            return Constants::ERROR . $e->getMessage();
+            return $this->hrExceptions($e);
         }
     }
 
@@ -166,7 +166,7 @@ class HotRecharge
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
-            return Constants::ERROR . $e->getMessage();
+            return $this->hrExceptions($e);
         }
     }
 
@@ -181,7 +181,7 @@ class HotRecharge
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
-            return Constants::ERROR . $e->getMessage();
+            return $this->hrExceptions($e);
         }
     }
 
@@ -196,7 +196,7 @@ class HotRecharge
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
-            return Constants::ERROR . $e->getMessage();
+            return $this->hrExceptions($e);
         }
     }
 
