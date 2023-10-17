@@ -1,0 +1,26 @@
+{
+  "name": "tinosoft/hot-recharge",
+  "description": "HotRecharge php library",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Tinosoft\\HotRecharge\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Collen Tirivamwe",
+      "email": "collen@tinosoft.co.zw"
+    },
+    {
+      "name": "Tinosoft P.B.C",
+      "email": "tinosoftzw@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "guzzlehttp/guzzle": "^7.5"
+  }
+}
