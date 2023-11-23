@@ -201,6 +201,21 @@ class HotRecharge
         }
     }
 
+    public function queryZesaTransaction($rechargeId)
+    {
+        $body = json_encode(['RechargeId' => $rechargeId]);
+        try {
+            $response = $this->client->request('POST', Constants::BASE_URL . Constants::QUERY_ZESA, [
+                'headers' => $this->headers,
+                'body'    => $body
+            ]);
+
+            return $response->getBody()->getContents();
+        } catch (RequestException $e) {
+            return $this->hrExceptions($e);
+        }
+    }
+
     /**
      * @param RequestException|\Exception $e
      *
