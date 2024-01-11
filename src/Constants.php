@@ -20,6 +20,13 @@ namespace Tinosoft\HotRecharge;
     const QUERY_EVD = "agents/query-evd";
     const RECHARGE_EVD = "agents/recharge-evd";
     const BULK_EVD = "agents/bulk-evd";
+    const BULK_TELONE_EVD = "agents/bulk-telone-evd";
+    const RECHARGE_TELONE_ADSL = "agents/recharge-telone-adsl";
+    const VERIFY_TELONE_ACCOUNT = "agents/verify-telone-account";
+    const QUERY_TELONE_BALANCE = "agents/query-telone-balance";
+    const PAY_TELONE_BILL = "agents/pay-telone-bill";
+    const RECHARGE_TELONE_VOIP = "agents/recharge-telone-voip";
+    const WALLET_BALANCE_USD = "agents/wallet-balance-usd";
 
     const ERROR = "Error: ";
 }
