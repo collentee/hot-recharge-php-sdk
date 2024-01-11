@@ -51,14 +51,31 @@ class HotRecharge
         }
     }
 
+    public function walletBalanceUsd()
+    {
+        try {
+            $response = $this->client->request('GET', Constants::BASE_URL . Constants::WALLET_BALANCE_USD, [
+                'headers' => $this->headers,
+            ]);
+
+            return $response->getBody()->getContents();
+        } catch (RequestException $e) {
+            return $this->hrExceptions($e);
+        }
+    }
+
     public function rechargePinless($amount, $mobileNumber)
     {
         try {
             $body     = json_encode(['amount' => $amount, 'targetmobile' => $mobileNumber]);
-            $response = $this->client->request('POST', Constants::BASE_URL . Constants:: RECHARGE_PINLESS, [
-                'headers' => $this->headers,
-                'body'    => $body
-            ]);
+            $response = $this->client->request(
+                'POST',
+                Constants::BASE_URL . Constants:: RECHARGE_PINLESS,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -69,9 +86,13 @@ class HotRecharge
     public function queryTransaction($ref)
     {
         try {
-            $response = $this->client->request('GET', Constants::BASE_URL . Constants::QUERY_TRANSACTION . $ref, [
-                'headers' => $this->headers,
-            ]);
+            $response = $this->client->request(
+                'GET',
+                Constants::BASE_URL . Constants::QUERY_TRANSACTION . $ref,
+                [
+                    'headers' => $this->headers,
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -215,6 +236,137 @@ class HotRecharge
             return $this->hrExceptions($e);
         }
     }
+
+    // TELONE Calls
+
+    public function teloneBalance()
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                Constants::BASE_URL . Constants::QUERY_TELONE_BALANCE,
+                [
+                    'headers' => $this->headers,
+                ]
+            );
+
+            return $response->getBody()->getContents();
+        } catch (RequestException $e) {
+            return $this->hrExceptions($e);
+        }
+    }
+
+    public function taloneBulkEvd($productId, $quantity)
+    {
+        $body = json_encode(['ProductID' => $productId, 'Quantity' => $quantity]);
+        try {
+            $response = $this->client->request('POST', Constants::BASE_URL . Constants::BULK_TELONE_EVD, [
+                'headers' => $this->headers,
+                'body'    => $body
+            ]);
+
+            return $response->getBody()->getContents();
+        } catch (RequestException $e) {
+            return $this->hrExceptions($e);
+        }
+    }
+
+    public function rechargeTeloneAdsl($productId, $accountNumber, $telNumber = null)
+    {
+        $body = json_encode(['ProductID' => $productId, 'AccountNumber' => $accountNumber, 'TargetNumber' => $telNumber]
+        );
+        try {
+            $response = $this->client->request(
+                'POST',
+                Constants::BASE_URL . Constants::RECHARGE_TELONE_ADSL,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
+
+            return $response->getBody()->getContents();
+        } catch (RequestException $e) {
+            return $this->hrExceptions($e);
+        }
+    }
+
+    public function teloneVerifyAccountNumber($accountNumber)
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                Constants::BASE_URL . Constants::VERIFY_TELONE_ACCOUNT . '/' . $accountNumber,
+                [
+                    'headers' => $this->headers,
+                ]
+            );
+
+            return $response->getBody()->getContents();
+        } catch (RequestException $e) {
+            return $this->hrExceptions($e);
+        }
+    }
+
+    public function teloneQueryBalance($accountNumber)
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                Constants::BASE_URL . Constants::QUERY_TELONE_BALANCE . '/' . $accountNumber,
+                [
+                    'headers' => $this->headers,
+                ]
+            );
+
+            return $response->getBody()->getContents();
+        } catch (RequestException $e) {
+            return $this->hrExceptions($e);
+        }
+    }
+
+    public function payTeloneBill($accountNumber, $amount, $telNumber = null)
+    {
+        $body = json_encode(['AccountNumber' => $accountNumber, 'Amount' => $amount, 'TargetNumber' => $telNumber]
+        );
+        try {
+            $response = $this->client->request(
+                'POST',
+                Constants::BASE_URL . Constants::PAY_TELONE_BILL,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
+
+            return $response->getBody()->getContents();
+        } catch (RequestException $e) {
+            return $this->hrExceptions($e);
+        }
+    }
+
+
+
+    public function rechargeTeloneVoip($accountNumber, $amount, $telNumber = null)
+    {
+        $body = json_encode(['AccountNumber' => $accountNumber, 'Amount' => $amount, 'TargetNumber' => $telNumber]
+        );
+        try {
+            $response = $this->client->request(
+                'POST',
+                Constants::BASE_URL . Constants::RECHARGE_TELONE_VOIP,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
+
+            return $response->getBody()->getContents();
+        } catch (RequestException $e) {
+            return $this->hrExceptions($e);
+        }
+    }
+
 
     /**
      * @param RequestException|\Exception $e
