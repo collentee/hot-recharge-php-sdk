@@ -11,16 +11,16 @@ use GuzzleHttp\Exception\RequestException;
 class HotRecharge
 {
     protected $client;
-    private $config;
+    private $auth;
     private $headers = [];
 
     public function __construct(
-        HotRechargeAuth $config,
+        HotRechargeAuth $hrAuth,
         bool $use_random_ref = true,
     ) {
         $this->client         = new Client();
         $this->use_random_ref = $use_random_ref;
-        $this->config         = $config;
+        $this->auth         = $hrAuth;
         $this->setupHeaders();
     }
 
@@ -413,20 +413,20 @@ class HotRecharge
 
     private function setupHeaders()
     {
-        if ($this->config) {
+        if ($this->auth) {
             if ($this->use_random_ref) {
                 $this->headers = [
-                    "x-access-code"     => $this->config->userName,
-                    "x-access-password" => $this->config->userPassword,
+                    "x-access-code"     => $this->auth->userName,
+                    "x-access-password" => $this->auth->userPassword,
                     "x-agent-reference" => $this->uuidChunkRef(),
                     "content-type"      => Constants::MIME_TYPES,
                     "cache-control"     => "no-cache",
                 ];
             } else {
                 $this->headers = [
-                    "x-access-code"     => $this->config->userName,
-                    "x-access-password" => $this->config->userPassword,
-                    "x-agent-reference" => $this->config->reference,
+                    "x-access-code"     => $this->auth->userName,
+                    "x-access-password" => $this->auth->userPassword,
+                    "x-agent-reference" => $this->auth->reference,
                     "content-type"      => Constants::MIME_TYPES,
                     "cache-control"     => "no-cache",
                 ];
