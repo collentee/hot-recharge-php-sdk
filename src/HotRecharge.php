@@ -345,8 +345,6 @@ class HotRecharge
         }
     }
 
-
-
     public function rechargeTeloneVoip($accountNumber, $amount, $telNumber = null)
     {
         $body = json_encode(['AccountNumber' => $accountNumber, 'Amount' => $amount, 'TargetNumber' => $telNumber]
@@ -367,6 +365,31 @@ class HotRecharge
         }
     }
 
+    public function RechargeUsdEvdPin($accountNumber, $denomination, $quantity, $telNumber)
+    {
+        $body = json_encode(
+            [
+                'BrandID'      => $accountNumber,
+                'Denomination' => $denomination,
+                "Quantity"     => $quantity,
+                'TargetNumber' => $telNumber
+            ]
+        );
+        try {
+            $response = $this->client->request(
+                'POST',
+                Constants::BASE_URL . Constants::RECHARGE_USD_EVD_PIN,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
+
+            return $response->getBody()->getContents();
+        } catch (RequestException $e) {
+            return $this->hrExceptions($e);
+        }
+    }
 
     /**
      * @param RequestException|\Exception $e
