@@ -440,7 +440,7 @@ class HotRecharge
         return $chunk[0];
     }
 
-    private function __autoUpdateRef()
+    private function autoUpdateRef()
     {
         if ($this->use_random_ref) {
             $this->__headers["x-agent-reference"] = $this->uuidChunkRef();
