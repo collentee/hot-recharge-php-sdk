@@ -20,7 +20,7 @@ class HotRecharge
     ) {
         $this->client         = new Client();
         $this->use_random_ref = $use_random_ref;
-        $this->auth         = $hrAuth;
+        $this->auth           = $hrAuth;
         $this->setupHeaders();
     }
 
@@ -399,8 +399,8 @@ class HotRecharge
     public function hrExceptions(RequestException|\Exception $e): string
     {
         if ($e->hasResponse()) {
-            $response   = $e->getResponse();
-            $body       = $response->getBody()->getContents();
+            $response = $e->getResponse();
+            $body     = $response->getBody()->getContents();
 
             return $body;
         } else {

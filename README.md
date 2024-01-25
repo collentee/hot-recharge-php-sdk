@@ -18,7 +18,6 @@ For more details and usage examples, refer to the code and documentation.
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-
 ## Authentication Header
 
 To use this library, you need to set up authentication details using the `HRAuthConfig` class. Here's how you can configure it:
