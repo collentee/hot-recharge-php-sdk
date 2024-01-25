@@ -6,7 +6,7 @@ namespace Tinosoft\HotRecharge;
 
      const BASE_URL = 'https://ssl.hot.co.zw/api/v1/';
      const MIME_TYPES = "application/json";
-// Endpoints definition
+    // Endpoints definition
     const RECHARGE_PINLESS = "agents/recharge-pinless";
     const RECHARGE_DATA = "agents/recharge-data";
     const WALLET_BALANCE = "agents/wallet-balance";
@@ -27,6 +27,7 @@ namespace Tinosoft\HotRecharge;
     const PAY_TELONE_BILL = "agents/pay-telone-bill";
     const RECHARGE_TELONE_VOIP = "agents/recharge-telone-voip";
     const WALLET_BALANCE_USD = "agents/wallet-balance-usd";
+     const RECHARGE_USD_EVD_PIN = "agents/recharge-evd-usd";
 
     const ERROR = "Error: ";
 }
