@@ -3,7 +3,7 @@
 namespace Tinosoft\HotRecharge;
 
 require_once 'vendor/autoload.php';
-require_once 'HRAuthConfig.php';
+require_once 'HotRechargeAuth.php';
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -15,7 +15,7 @@ class HotRecharge
     private $headers = [];
 
     public function __construct(
-        HRAuthConfig $config,
+        HotRechargeAuth $config,
         bool $use_random_ref = true,
     ) {
         $this->client         = new Client();

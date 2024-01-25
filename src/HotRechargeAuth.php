@@ -2,7 +2,7 @@
 
 namespace Tinosoft\HotRecharge;
 
-class HRAuthConfig
+class HotRechargeAuth
 {
     public $userName;
     public $userPassword;
