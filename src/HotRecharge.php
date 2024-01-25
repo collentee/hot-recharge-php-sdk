@@ -365,7 +365,7 @@ class HotRecharge
         }
     }
 
-    public function RechargeUsdEvdPin($accountNumber, $denomination, $quantity, $telNumber)
+    public function rechargeUsdEvdPin($accountNumber, $denomination, $quantity, $telNumber)
     {
         $body = json_encode(
             [
@@ -400,10 +400,8 @@ class HotRecharge
     {
         if ($e->hasResponse()) {
             $response   = $e->getResponse();
-            $statusCode = $response->getStatusCode();
             $body       = $response->getBody()->getContents();
 
-            // Handle the response or error message
             return $body;
         } else {
             // Handle other request-related exceptions
