@@ -27,9 +27,9 @@ To use this library, you need to set up authentication details using the `HRAuth
 require 'vendor/autoload.php';
 
 use HotRecharge\HotRecharge;
-use HotRecharge\HRAuthConfig;
+use HotRecharge\HotRechargeAuth;
 
-$authConfig = new HRAuthConfig('your-access-code', 'your-access-password');
+$authConfig = new HotRechargeAuth('your-access-code', 'your-access-password');
 $hotRecharge = new HotRecharge($authConfig);
 
 
