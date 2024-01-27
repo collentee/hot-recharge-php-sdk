@@ -24,23 +24,13 @@ class HotRechargeAuth
         }
     }
 
-    public function set_access_code($userName)
-    {
-        $this->userName = $userName;
-    }
-
-    public function set_access_password($userPassword)
-    {
-        $this->userPassword = $userPassword;
-    }
-
-    public function set_reference($reference)
+    private function setReference($reference)
     {
         $this->reference = $reference;
         $this->checkReferenceLimit();
     }
 
-    public function __toString()
+    private function toString()
     {
         return "<HotRechargeAuthConfig: {$this->userName}, {$this->access_password}, {$this->reference}>";
     }
