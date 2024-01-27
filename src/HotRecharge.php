@@ -400,9 +400,8 @@ class HotRecharge
     {
         if ($e->hasResponse()) {
             $response = $e->getResponse();
-            $body     = $response->getBody()->getContents();
 
-            return $body;
+            return $response->getBody()->getContents();
         } else {
             // Handle other request-related exceptions
             return "Request Exception: " . $e->getMessage() . "\n";
