@@ -27,9 +27,13 @@ class HotRecharge
     public function walletBalance()
     {
         try {
-            $response = $this->client->request('GET', Constants::BASE_URL . Constants::WALLET_BALANCE, [
-                'headers' => $this->headers,
-            ]);
+            $response = $this->client->request(
+                'GET',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::WALLET_BALANCE,
+                [
+                    'headers' => $this->headers,
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -40,10 +44,14 @@ class HotRecharge
     public function userBalance($mobileNumber)
     {
         try {
-            $response = $this->client->request('GET', Constants::BASE_URL . Constants::ENDUSER_BALANCE, [
-                'headers' => $this->headers,
-                'query'   => ['targetmobile' => $mobileNumber]
-            ]);
+            $response = $this->client->request(
+                'GET',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::ENDUSER_BALANCE,
+                [
+                    'headers' => $this->headers,
+                    'query'   => ['targetmobile' => $mobileNumber]
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -54,9 +62,13 @@ class HotRecharge
     public function walletBalanceUsd()
     {
         try {
-            $response = $this->client->request('GET', Constants::BASE_URL . Constants::WALLET_BALANCE_USD, [
-                'headers' => $this->headers,
-            ]);
+            $response = $this->client->request(
+                'GET',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::WALLET_BALANCE_USD,
+                [
+                    'headers' => $this->headers,
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -70,7 +82,7 @@ class HotRecharge
             $body     = json_encode(['amount' => $amount, 'targetmobile' => $mobileNumber]);
             $response = $this->client->request(
                 'POST',
-                Constants::BASE_URL . Constants:: RECHARGE_PINLESS,
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::RECHARGE_PINLESS,
                 [
                     'headers' => $this->headers,
                     'body'    => $body
@@ -88,7 +100,7 @@ class HotRecharge
         try {
             $response = $this->client->request(
                 'GET',
-                Constants::BASE_URL . Constants::QUERY_TRANSACTION . $ref,
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::QUERY_TRANSACTION . $ref,
                 [
                     'headers' => $this->headers,
                 ]
@@ -104,10 +116,14 @@ class HotRecharge
     {
         try {
             $body     = json_encode(['productcode' => $productcode, 'targetmobile' => $mobileNumber]);
-            $response = $this->client->request('POST', Constants::BASE_URL . Constants::RECHARGE_DATA, [
-                'headers' => $this->headers,
-                'body'    => $body
-            ]);
+            $response = $this->client->request(
+                'POST',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::RECHARGE_DATA,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -118,9 +134,13 @@ class HotRecharge
     public function getDataBundles()
     {
         try {
-            $response = $this->client->request('GET', Constants::BASE_URL . Constants::GET_DATA_BUNDLE, [
-                'headers' => $this->headers,
-            ]);
+            $response = $this->client->request(
+                'GET',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::GET_DATA_BUNDLE,
+                [
+                    'headers' => $this->headers,
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -131,9 +151,13 @@ class HotRecharge
     public function queryEvd()
     {
         try {
-            $response = $this->client->request('GET', Constants::BASE_URL . Constants::QUERY_EVD, [
-                'headers' => $this->headers,
-            ]);
+            $response = $this->client->request(
+                'GET',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::QUERY_EVD,
+                [
+                    'headers' => $this->headers,
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -145,10 +169,14 @@ class HotRecharge
     {
         try {
             $body     = json_encode(['BrandID' => $brandId, 'Denomination' => $denomination, 'Quantity' => $quantity]);
-            $response = $this->client->request('POST', Constants::BASE_URL . Constants::BULK_EVD, [
-                'headers' => $this->headers,
-                'body'    => $body
-            ]);
+            $response = $this->client->request(
+                'POST',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::BULK_EVD,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -167,10 +195,14 @@ class HotRecharge
                     'TargetNumber' => $phoneNumber
                 ]
             );
-            $response = $this->client->request('POST', Constants::BASE_URL . Constants::RECHARGE_EVD, [
-                'headers' => $this->headers,
-                'body'    => $body
-            ]);
+            $response = $this->client->request(
+                'POST',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::RECHARGE_EVD,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -182,9 +214,13 @@ class HotRecharge
     public function zesaBalance()
     {
         try {
-            $response = $this->client->request('GET', Constants::BASE_URL . Constants::ZESA_BALANCE, [
-                'headers' => $this->headers,
-            ]);
+            $response = $this->client->request(
+                'GET',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::ZESA_BALANCE,
+                [
+                    'headers' => $this->headers,
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -196,10 +232,14 @@ class HotRecharge
     {
         $body = json_encode(['MeterNumber' => $meterNumber]);
         try {
-            $response = $this->client->request('POST', Constants::BASE_URL . Constants::ZESA_CUSTOMER, [
-                'headers' => $this->headers,
-                'body'    => $body
-            ]);
+            $response = $this->client->request(
+                'POST',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::ZESA_CUSTOMER,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -211,10 +251,14 @@ class HotRecharge
     {
         $body = json_encode(['MeterNumber' => $meterNumber, 'TargetNumber' => $targetMobile, 'Amount' => $amount]);
         try {
-            $response = $this->client->request('POST', Constants::BASE_URL . Constants::RECHARGE_ZESA, [
-                'headers' => $this->headers,
-                'body'    => $body
-            ]);
+            $response = $this->client->request(
+                'POST',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::RECHARGE_ZESA,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -226,10 +270,14 @@ class HotRecharge
     {
         $body = json_encode(['RechargeId' => $rechargeId]);
         try {
-            $response = $this->client->request('POST', Constants::BASE_URL . Constants::QUERY_ZESA, [
-                'headers' => $this->headers,
-                'body'    => $body
-            ]);
+            $response = $this->client->request(
+                'POST',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::QUERY_ZESA,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -244,7 +292,7 @@ class HotRecharge
         try {
             $response = $this->client->request(
                 'GET',
-                Constants::BASE_URL . Constants::QUERY_TELONE_BALANCE,
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::QUERY_TELONE_BALANCE,
                 [
                     'headers' => $this->headers,
                 ]
@@ -260,10 +308,14 @@ class HotRecharge
     {
         $body = json_encode(['ProductID' => $productId, 'Quantity' => $quantity]);
         try {
-            $response = $this->client->request('POST', Constants::BASE_URL . Constants::BULK_TELONE_EVD, [
-                'headers' => $this->headers,
-                'body'    => $body
-            ]);
+            $response = $this->client->request(
+                'POST',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::BULK_TELONE_EVD,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
 
             return $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -278,7 +330,7 @@ class HotRecharge
         try {
             $response = $this->client->request(
                 'POST',
-                Constants::BASE_URL . Constants::RECHARGE_TELONE_ADSL,
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::RECHARGE_TELONE_ADSL,
                 [
                     'headers' => $this->headers,
                     'body'    => $body
@@ -296,7 +348,7 @@ class HotRecharge
         try {
             $response = $this->client->request(
                 'GET',
-                Constants::BASE_URL . Constants::VERIFY_TELONE_ACCOUNT . '/' . $accountNumber,
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::VERIFY_TELONE_ACCOUNT . '/' . $accountNumber,
                 [
                     'headers' => $this->headers,
                 ]
@@ -313,7 +365,7 @@ class HotRecharge
         try {
             $response = $this->client->request(
                 'GET',
-                Constants::BASE_URL . Constants::QUERY_TELONE_BALANCE . '/' . $accountNumber,
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::QUERY_TELONE_BALANCE . '/' . $accountNumber,
                 [
                     'headers' => $this->headers,
                 ]
@@ -332,7 +384,7 @@ class HotRecharge
         try {
             $response = $this->client->request(
                 'POST',
-                Constants::BASE_URL . Constants::PAY_TELONE_BILL,
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::PAY_TELONE_BILL,
                 [
                     'headers' => $this->headers,
                     'body'    => $body
@@ -352,7 +404,7 @@ class HotRecharge
         try {
             $response = $this->client->request(
                 'POST',
-                Constants::BASE_URL . Constants::RECHARGE_TELONE_VOIP,
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::RECHARGE_TELONE_VOIP,
                 [
                     'headers' => $this->headers,
                     'body'    => $body
@@ -378,7 +430,7 @@ class HotRecharge
         try {
             $response = $this->client->request(
                 'POST',
-                Constants::BASE_URL . Constants::RECHARGE_USD_EVD_PIN,
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::RECHARGE_USD_EVD_PIN,
                 [
                     'headers' => $this->headers,
                     'body'    => $body
@@ -416,7 +468,7 @@ class HotRecharge
                     "x-access-code"     => $this->auth->userName,
                     "x-access-password" => $this->auth->userPassword,
                     "x-agent-reference" => $this->uuidChunkRef(),
-                    "content-type"      => Constants::MIME_TYPES,
+                    "content-type"      => HotRechargeConstants::MIME_TYPES,
                     "cache-control"     => "no-cache",
                 ];
             } else {
@@ -424,7 +476,7 @@ class HotRecharge
                     "x-access-code"     => $this->auth->userName,
                     "x-access-password" => $this->auth->userPassword,
                     "x-agent-reference" => $this->auth->reference,
-                    "content-type"      => Constants::MIME_TYPES,
+                    "content-type"      => HotRechargeConstants::MIME_TYPES,
                     "cache-control"     => "no-cache",
                 ];
             }

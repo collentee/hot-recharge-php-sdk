@@ -1,8 +1,8 @@
 <?php
 
 namespace Tinosoft\HotRecharge;
- class Constants {
-     // Constants.php
+ class HotRechargeConstants {
+     // HotRechargeConstants.php
 
      const BASE_URL = 'https://ssl.hot.co.zw/api/v1/';
      const MIME_TYPES = "application/json";
