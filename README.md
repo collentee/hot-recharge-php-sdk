@@ -7,7 +7,7 @@ Install the library using Composer:
 
 composer require tinosoft/hot-recharge
 
-Configure authentication by creating an instance of HRAuthConfig and using it to initialize HotRecharge.
+Configure authentication by creating an instance of HotRechargeAuth and using it to initialize HotRecharge.
 
 Use the library to perform various HotRecharge operations as needed.
 
@@ -20,7 +20,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Authentication Header
 
-To use this library, you need to set up authentication details using the `HRAuthConfig` class. Here's how you can configure it:
+To use this library, you need to set up authentication details using the `HotRechargeAuth` class. Here's how you can configure it:
 
 ```php
 require 'vendor/autoload.php';
@@ -28,7 +28,7 @@ require 'vendor/autoload.php';
 use HotRecharge\HotRecharge;
 use HotRecharge\HotRechargeAuth;
 
-$authConfig = new HotRechargeAuth('your-access-code', 'your-access-password');
+$authConfig = new HotRechargeAuth('your-access-email', 'your-access-password');
 $hotRecharge = new HotRecharge($authConfig);
 
 
