@@ -35,17 +35,23 @@ $hotRecharge = new HotRecharge($authConfig);
 
 ## Usage Examples
 
-## Recharging Example
-$res = $hotRecharge->rechargeZesa('recipient_mobile_number', 'voucher_code', 'amount');
+## Recharging Pinless Example
+$res = $hotRecharge->rechargePinless('amount', 'recipient_mobile_number');
 echo $res;
 
 recipient_mobile_number: The mobile number of the recipient.
-voucher_code: The voucher code for recharging.
 amount: The recharge amount.
-Query Transaction Example
 
 ## Query Transaction Example
 $res = $hotRecharge->queryTransaction('agent_reference');
 echo $res;
 
 agent_reference: The agent reference for the transaction you want to query.
+
+## Recharging Zesa Example
+$res = $hotRecharge->rechargeZesa('meter_number', recipient_mobile_number', 'amount');
+echo $res;
+
+meter_number : The meter number of the recipient.
+recipient_mobile_number: The mobile number of the recipient.
+amount: The recharge amount.
