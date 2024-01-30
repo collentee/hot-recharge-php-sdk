@@ -29,6 +29,9 @@ use HotRecharge\HotRecharge;
 use HotRecharge\HotRechargeAuth;
 
 $authConfig = new HotRechargeAuth('your-access-email', 'your-access-password');
+or 
+$authConfig = new HotRechargeAuth('your-access-email', 'your-access-password', 'agent_reference');
+
 $hotRecharge = new HotRecharge($authConfig);
 
 
