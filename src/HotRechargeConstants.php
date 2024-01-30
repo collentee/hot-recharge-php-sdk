@@ -28,6 +28,7 @@ namespace Tinosoft\HotRecharge;
     const RECHARGE_TELONE_VOIP = "agents/recharge-telone-voip";
     const WALLET_BALANCE_USD = "agents/wallet-balance-usd";
      const RECHARGE_USD_EVD_PIN = "agents/recharge-evd-usd";
+     const RECHARGE_DATA_USD = "agents/recharge-data-usd";
 
     const ERROR = "Error: ";
 }
