@@ -460,6 +460,7 @@ class HotRecharge
             return $this->hrExceptions($e);
         }
     }
+
     public function rechargeDataUsd($productCode, $targetMobile, $customerMessage = null)
     {
         $requestData = ['productcode' => $productCode, 'targetMobile' => $targetMobile];
