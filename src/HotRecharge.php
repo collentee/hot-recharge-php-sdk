@@ -76,10 +76,16 @@ class HotRecharge
         }
     }
 
-    public function rechargePinless($amount, $mobileNumber)
+    public function rechargePinless($amount, $mobileNumber, $customMessage = null)
     {
+        $requestData = ['amount' => $amount, 'targetmobile' => $mobileNumber];
+
+        if ($customMessage !== null) {
+            $requestData['CustomerSMS'] = $customMessage;
+        }
+
         try {
-            $body     = json_encode(['amount' => $amount, 'targetmobile' => $mobileNumber]);
+            $body     = json_encode($requestData);
             $response = $this->client->request(
                 'POST',
                 HotRechargeConstants::BASE_URL . HotRechargeConstants::RECHARGE_PINLESS,
@@ -112,10 +118,16 @@ class HotRecharge
         }
     }
 
-    public function rechargeData($productcode, $mobileNumber)
+    public function rechargeData($productcode, $mobileNumber, $customMessage = null)
     {
+        $requestData = ['productcode' => $productcode, 'targetmobile' => $mobileNumber];
+
+        if ($customMessage !== null) {
+            $requestData['CustomerSMS'] = $customMessage;
+        }
+
         try {
-            $body     = json_encode(['productcode' => $productcode, 'targetmobile' => $mobileNumber]);
+            $body     = json_encode($requestData);
             $response = $this->client->request(
                 'POST',
                 HotRechargeConstants::BASE_URL . HotRechargeConstants::RECHARGE_DATA,
@@ -247,9 +259,15 @@ class HotRecharge
         }
     }
 
-    public function rechargeZesa($meterNumber, $targetMobile, $amount)
+    public function rechargeZesa($meterNumber, $targetMobile, $amount, $customMessage)
     {
-        $body = json_encode(['MeterNumber' => $meterNumber, 'TargetNumber' => $targetMobile, 'Amount' => $amount]);
+        $requestData = ['MeterNumber' => $meterNumber, 'TargetNumber' => $targetMobile, 'Amount' => $amount];
+
+        if ($customMessage !== null) {
+            $requestData['CustomerSMS'] = $customMessage;
+        }
+
+        $body = json_encode($requestData);
         try {
             $response = $this->client->request(
                 'POST',
@@ -431,6 +449,30 @@ class HotRecharge
             $response = $this->client->request(
                 'POST',
                 HotRechargeConstants::BASE_URL . HotRechargeConstants::RECHARGE_USD_EVD_PIN,
+                [
+                    'headers' => $this->headers,
+                    'body'    => $body
+                ]
+            );
+
+            return $response->getBody()->getContents();
+        } catch (RequestException $e) {
+            return $this->hrExceptions($e);
+        }
+    }
+    public function rechargeDataUsd($productCode, $targetMobile, $customerMessage = null)
+    {
+        $requestData = ['productcode' => $productCode, 'targetMobile' => $targetMobile];
+
+        if ($customerMessage !== null) {
+            $requestData['CustomerSMS'] = $customerMessage;
+        }
+
+        $body = json_encode($requestData);
+        try {
+            $response = $this->client->request(
+                'POST',
+                HotRechargeConstants::BASE_URL . HotRechargeConstants::RECHARGE_DATA_USD,
                 [
                     'headers' => $this->headers,
                     'body'    => $body
